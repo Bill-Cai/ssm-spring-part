@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--  1. 可以使用无参数构造函数实例化的组件，进行IoC配置  -->
+    <bean id="happyComponet1" class="org.example.ioc_01.HappyComponent"/>
+    <!--
+      <bean/>  一个组件信息，一个组件对象
+        id，组件的标识，唯一，方便后期读取
+        class，组件的类的权限定符
+      将一个组件类声明两个组件信息，则会实例化两个组件对象，相当于new两个对象。【但是，一般默认单例模式】
+      -->
+    <bean id="happyComponet2" class="org.example.ioc_01.HappyComponent"/>
+
+    <!--  2. 静态工程类，声明工厂方法进行IoC配置  -->
+    <!--
+      <bean/>
+        id，组件的标识
+        class，组件的类的权限定符
+        factory-method，静态工厂方法的名称
+      -->
+    <bean id="clientService" class="org.example.ioc_01.ClientService" factory-method="createInstance"/>
+
+    <!--  3. 非静态工厂  -->
+    <!--
+      step 1. 配置工厂组件信息
+      step 2. 指定非静态工厂对象和方法名，配置生成的IoC信息【实例工厂方法必须是非静态的】
+      -->
+    <bean id="defaultServiceLocator" class="org.example.ioc_01.DefaultServiceLocator"/>
+    <bean id="clientService2" factory-bean="defaultServiceLocator" factory-method="createClientServiceInstance"/>
+</beans>
