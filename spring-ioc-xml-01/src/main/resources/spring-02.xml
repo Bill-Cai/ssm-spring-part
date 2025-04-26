@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--  引用和被引用的组件，必须都在IoC容器  -->
+
+    <!--  1. 单个构造函数注入  -->
+    <!--
+      step 1. 配置Bean
+      step 2. 通过构造函数注入，传递构造参数传值
+        <constructor-arg> 传递参数
+            value：传递基本数据类型
+            ref：传递引用类型
+      -->
+    <bean id="userDao" class="org.example.ioc_02.UserDao"/>
+    <bean id="userService1" class="org.example.ioc_02.UserService">
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+    <!--  2. 多个构造函数注入  -->
+    <bean id="userService2" class="org.example.ioc_02.UserService">
+        <!--  传参方案1：构造参数按照顺序填写【不推荐】  -->
+        <constructor-arg value="18"/>
+        <constructor-arg value="zhangsan"/>
+        <constructor-arg ref="userDao"/>
+    </bean>
+    <bean id="userService3" class="org.example.ioc_02.UserService">
+        <!--  传参方案2：按照名字填写，不考虑顺序【推荐】  -->
+        <constructor-arg name="userDao" ref="userDao"/>
+        <constructor-arg name="age" value="18"/>
+        <constructor-arg name="name" value="zhangsan"/>
+    </bean>
+    <bean id="userService3" class="org.example.ioc_02.UserService">
+        <!--  传参方案3：按照参数下角标填写，不考虑顺序【不推荐】  -->
+        <constructor-arg index="1" value="zhangsan"/>
+        <constructor-arg index="0" value="18"/>
+        <constructor-arg index="2" ref="userDao"/>
+    </bean>
+
+    <!--  3. 触发setter方法实现注入  -->
+    <bean id="movieFinder" class="org.example.ioc_02.MovieFinder"/>
+    <bean id="simpleMovieLister" class="org.example.ioc_02.SimpleMovieLister">
+        <!--  这里的name是setter方法除去set且首字母小写的名称  -->
+        <property name="movieName" value="让子弹飞"/>
+        <property name="movieFinder" ref="movieFinder"/>
+    </bean>
+</beans>
