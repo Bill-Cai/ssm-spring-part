@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--  druid  -->
+    <bean class="com.alibaba.druid.pool.DruidDataSource" id="druidDataSource">
+        <property name="driverClassName" value="${example.driverClassName}"/>
+        <property name="url" value="${example.url}"/>
+        <property name="username" value="${example.username}"/>
+        <property name="password" value="${example.password}"/>
+    </bean>
+    <!--  jdbcTemplate  -->
+    <bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate">
+        <property name="dataSource" ref="druidDataSource"/>
+    </bean>
+    <!--  dao 配置DI：jdbcTemplate  -->
+    <bean class="org.example.dao.StudentDaoImpl" id="studentDao">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    <!--  service 配置DI：dao  -->
+    <bean class="org.example.service.StudentServiceImpl" id="studentService">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+    <!--  controller 配置DI：service  -->
+    <bean class="org.example.controller.StudentController" id="studentController">
+        <property name="studentService" ref="studentService"/>
+    </bean>
+
+</beans>
