@@ -53,4 +53,15 @@ public class SpringIoCTest {
         // 3. 关闭Spring容器
         context.close();
     }
+
+    @Test
+    public void testIoC_04() {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-04.xml");
+        // 1. 获取Bean
+        org.example.ioc_04.JavaBean javaBean = context.getBean("javaBean", org.example.ioc_04.JavaBean.class);
+        // 2. 使用Bean
+        System.out.println("javaBean = " + javaBean);
+        // 3. 关闭Spring容器
+        context.close();
+    }
 }
