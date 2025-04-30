@@ -4,6 +4,17 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    <context:component-scan base-package="org.example"/>-->
-<!--    <context:property-placeholder location="classpath:jdbc.properties"/>-->
+    <!--  使用注解类就不需要这样做了  -->
+    <!--    <context:component-scan base-package="org.example"/>-->
+    <!--    <context:property-placeholder location="classpath:jdbc.properties"/>-->
+
+    <!--    <bean class="com.alibaba.druid.pool.DruidDataSource" name="druidDataSource">-->
+    <!--        <property name="driverClassName" value="${jdbc.driverClassName}"/>-->
+    <!--        <property name="url" value="${jdbc.url}"/>-->
+    <!--        <property name="username" value="${jdbc.username}"/>-->
+    <!--        <property name="password" value="${jdbc.password}"/>-->
+    <!--    </bean>-->
+    <!--    <bean class="org.springframework.jdbc.core.JdbcTemplate" name="jdbcTemplate">-->
+    <!--        <property name="dataSource" ref="druidDataSource"/>-->
+    <!--    </bean>-->
 </beans>

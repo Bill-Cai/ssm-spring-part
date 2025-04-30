@@ -14,6 +14,7 @@
         <module>spring-ioc-annotation-03</module>
         <module>spring-ioc-annotation-practice-05</module>
         <module>spring-ioc-java-06</module>
+        <module>spring-java-practice-07</module>
     </modules>
 
     <properties>
@@ -34,6 +35,21 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.11.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>6.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.20</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
         </dependency>
     </dependencies>
 
