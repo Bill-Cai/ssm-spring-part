@@ -28,4 +28,10 @@ public class SpringAopTest {
         int result = calculator.sub(1, 2);
         System.out.println("Get result: " + result);
     }
+
+    @Test
+    public void test3() {
+        int result = calculator.div(1, 1);
+        System.out.println("Get result: " + result);
+    }
 }
