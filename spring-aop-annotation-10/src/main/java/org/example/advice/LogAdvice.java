@@ -1,6 +1,7 @@
 package org.example.advice;
 
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
+@Order(5)
 public class LogAdvice {
     /**
      * *  切点表达式
@@ -61,6 +63,7 @@ public class LogAdvice {
 //    @Pointcut("execution(* org.example.service.impl.*.*(..))")
 //    public void pointcut() {
 //    }
+
     @Before("org.example.pointcut.MyPointCut.pointcut1()")
     public void start() {
         System.out.println("LogAdvice: start");

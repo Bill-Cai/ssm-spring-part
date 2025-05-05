@@ -22,8 +22,8 @@ import java.lang.reflect.Modifier;
  * *        2. 返回结果（仅在后置增强 @AfterReturning 中使用）
  * *        3. 异常信息（仅在异常增强 @AfterThrowing 中使用）
  */
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class MyAdvice {
     @Before("org.example.pointcut.MyPointCut.pointcut2()")
     public void before(JoinPoint joinPoint) {
