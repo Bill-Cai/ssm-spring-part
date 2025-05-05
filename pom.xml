@@ -18,6 +18,7 @@
         <module>spring-test-annotation-08</module>
         <module>spring-aop-annotation-09</module>
         <module>spring-aop-annotation-10</module>
+        <module>spring-aop-xml-11</module>
     </modules>
 
     <properties>
